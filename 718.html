@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche 718 Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .spec-icon {
+            background: linear-gradient(135deg, #d10000 0%, #a00000 100%);
+        }
+        .filter-btn.active {
+            background-color: #d10000;
+            color: white;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://www.porsche.com/international/models/718/718-models/718-cayman-gt4-rs/gallery/');
+            background-size: cover;
+            background-position: center;
+        }
+        .compare-checkbox:checked + .compare-label {
+            background-color: #d10000;
+            border-color: #d10000;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-black text-white py-4 px-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                
+                <h1 class="text-xl font-bold">PORSCHE</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-red-500 transition">Models</a>
+                <a href="#" class="hover:text-red-500 transition">Shop</a>
+                <a href="#" class="hover:text-red-500 transition">Service</a>
+                <a href="#" class="hover:text-red-500 transition">Discover</a>
+            </nav>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-20 px-6">
+        <div class="container mx-auto text-center">
+            
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">718 MODEL</h1>
+            <p class="text-xl md:text-2xl mb-8">Pure Sports Car Maximum driving pleasure</p>
+            <a href="https://images-porsche.imgix.net/-/media/CCECB7CFE4334FF381EB15BD666AD030_8EFACDEF4CF043AD8D2956B934DE830D_cayenne-gts-coupe-side?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block">
+                Configure Yours
+            </a>
+        </div>
+    </section>
+
+    <!-- Model Filter -->
+    <section class="bg-white py-8 px-6 shadow-sm">
+        <div class="container mx-auto">
+            <div class="flex flex-wrap items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Models</h2>
+                <button class="text-red-600 hover:text-red-800 font-medium">Reset Filter</button>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+                <button class="filter-btn active px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">All (88)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">718 (10)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">911 (23)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Taycan (22)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Panamera (9)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Macan (4)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Cayenne (20)</button>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Coupé (5)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Roadster (5)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">2 (10)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Rear wheel drive (10)</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">Gasoline (10)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Comparison Header -->
+    <section class="bg-gray-50 py-6 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-gray-800">718 Models</h2>
+            <button id="compareBtn" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-full transition duration-300 hidden">
+                <i class="fas fa-exchange-alt mr-2"></i> Compare Selected (0)
+            </button>
+        </div>
+    </section>
+
+    <!-- Model Cards -->
+    <section class="py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Model Card 1 -->
+                <div class="model-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="https://images-porsche.imgix.net/-/media/4D76222C0FFD456B9F8F93CC638725CD_269E9C4B98FF4C54B6DE2F8741B844F0_CM24N3CIX0006-01-718-cayman-s-side?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" alt="Porsche 718" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4">
+                            <input type="checkbox" id="compare1" class="compare-checkbox hidden">
+                            <label for="compare1" class="compare-label cursor-pointer w-8 h-8 rounded-full border-2 border-gray-300 bg-white flex items-center justify-center transition">
+                                <i class="fas fa-plus text-gray-400 text-sm"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">718 Cayman</h3>
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption combined: 9.7 – 8.9 l/100 km (preliminary value), CO2-emissions combined (WLTP)*: 220 – 201 g/km (preliminary value), CO2 Class: G (preliminary value)</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-tachometer-alt text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">5.1 s</p>
+                                <p class="text-xs text-gray-500">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-bolt text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">300 PS</p>
+                                <p class="text-xs text-gray-500">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-gauge-high text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">275 km/h</p>
+                                <p class="text-xs text-gray-500">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full flex-1 transition duration-300">
+                                Select Model
+                            </button>
+                            <button class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model Card 2 -->
+                <div class="model-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="https://images-porsche.imgix.net/-/media/DA04524ED073403CBC8DA3E50AEF792F_0ADD510F2A8F4A86B510E6F30DFE883F_718-spyder-rs-side?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" alt="Porsche 718 Spyder RS" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4">
+                            <input type="checkbox" id="compare2" class="compare-checkbox hidden">
+                            <label for="compare2" class="compare-label cursor-pointer w-8 h-8 rounded-full border-2 border-gray-300 bg-white flex items-center justify-center transition">
+                                <i class="fas fa-plus text-gray-400 text-sm"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">718 Spyder RS</h3>
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption combined: 12.7 l/100 km (preliminary value), CO2-emissions combined (WLTP)*: 288 g/km (preliminary value), CO2 Class: G (preliminary value)</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-tachometer-alt text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">3.4 s</p>
+                                <p class="text-xs text-gray-500">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-bolt text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">500 PS</p>
+                                <p class="text-xs text-gray-500">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-gauge-high text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">308 km/h</p>
+                                <p class="text-xs text-gray-500">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full flex-1 transition duration-300">
+                                Select Model
+                            </button>
+                            <button class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model Card 3 -->
+                <div class="model-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="https://images-porsche.imgix.net/-/media/17F4A852520E4281A2272807457BC4FE_8D0254A8C72E42E1844FD52A1C9F3457_CM24N3BIX0001-718-cayman-side?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" alt="Porsche 718 Cayman GT4 RS" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4">
+                            <input type="checkbox" id="compare3" class="compare-checkbox hidden">
+                            <label for="compare3" class="compare-label cursor-pointer w-8 h-8 rounded-full border-2 border-gray-300 bg-white flex items-center justify-center transition">
+                                <i class="fas fa-plus text-gray-400 text-sm"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">718 Cayman GT4 RS</h3>
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption combined: 13.0 l/100 km (preliminary value), CO2-emissions combined (WLTP)*: 295 g/km (preliminary value), CO2 Class: G (preliminary value)</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-tachometer-alt text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">3.4 s</p>
+                                <p class="text-xs text-gray-500">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-bolt text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">500 PS</p>
+                                <p class="text-xs text-gray-500">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="spec-icon w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-gauge-high text-white"></i>
+                                </div>
+                                <p class="font-bold text-gray-800">315 km/h</p>
+                                <p class="text-xs text-gray-500">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full flex-1 transition duration-300">
+                                Select Model
+                            </button>
+                            <button class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Models</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">718 Models</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">911 Models</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Taycan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Panamera</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Macan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cayenne</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Financial Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Service & Parts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Porsche Connect</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Porsche Drive</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Experience Porsche</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Newsroom</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Motorsport</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Porsche Experience</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="text-gray-400 text-sm">© 2023 Porsche. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter button functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Compare functionality
+        const compareCheckboxes = document.querySelectorAll('.compare-checkbox');
+        const compareBtn = document.getElementById('compareBtn');
+        
+        compareCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateCompareButton);
+        });
+        
+        function updateCompareButton() {
+            const checkedCount = document.querySelectorAll('.compare-checkbox:checked').length;
+            if (checkedCount > 0) {
+                compareBtn.classList.remove('hidden');
+                compareBtn.textContent = ` Compare Selected (${checkedCount})`;
+            } else {
+                compareBtn.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

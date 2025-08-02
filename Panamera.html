@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche Panamera Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+        @media (max-width: 640px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .filter-chip {
+            transition: all 0.3s ease;
+        }
+        .filter-chip:hover {
+            background-color: #d50000;
+            color: white;
+        }
+        .filter-chip.active {
+            background-color: #d50000;
+            color: white;
+        }
+        .model-section {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-black text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="data:image/jpeg;base64,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" alt="Porsche Logo" class="h-8">
+                <h1 class="text-xl font-bold">PORSCHE</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-red-500 transition">Models</a>
+                <a href="#" class="hover:text-red-500 transition">Services</a>
+                <a href="#" class="hover:text-red-500 transition">Discover</a>
+                <a href="#" class="hover:text-red-500 transition">Locations</a>
+            </nav>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="relative h-96 bg-gray-900 overflow-hidden">
+        <img src="https://images-porsche.imgix.net/-/media/82470245156B451B8FD447D14D61BA0A_5B42C484DD0242CAA89FD781FC8DD834_panamera-model-intro?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" 
+             alt="Porsche Panamera" 
+             class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Panamera</h1>
+                <p class="text-xl text-white max-w-2xl mx-auto">The sports car among business saloons. The business saloon among sports cars.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Filter Section -->
+        <section class="mb-12 bg-white rounded-xl shadow-md p-6">
+            <div class="flex flex-wrap items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Filter Models</h2>
+                <button class="text-red-600 hover:text-red-800 font-medium">Reset Filter</button>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">All (88)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">718 (10)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">911 (23)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Taycan (22)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer active">Panamera (9)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Macan (4)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Cayenne (20)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Sport Saloon (7)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Executive (2)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">4+1 (9)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Rear-wheel drive (1)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Four-wheel drive (8)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Gasoline (3)</span>
+                <span class="filter-chip px-4 py-2 rounded-full bg-gray-200 text-gray-800 cursor-pointer">Hybrid (6)</span>
+            </div>
+        </section>
+
+        <!-- Model Navigation -->
+        <div class="flex mb-8 overflow-x-auto sticky top-16 bg-white py-4 z-40 shadow-sm">
+            <a href="#panamera-models" class="px-6 py-2 font-medium text-red-600 border-b-2 border-red-600">Panamera Models</a>
+            <a href="#executive-models" class="px-6 py-2 font-medium text-gray-600 hover:text-red-600">Executive Models</a>
+        </div>
+
+        <!-- Panamera Models Section -->
+        <section id="panamera-models" class="model-section mb-16">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Panamera Models</h2>
+                <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-medium transition flex items-center">
+                    <i class="fas fa-exchange-alt mr-2"></i> Compare models
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Model Card 1 -->
+                <div class="model-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images-porsche.imgix.net/-/media/82470245156B451B8FD447D14D61BA0A_5B42C484DD0242CAA89FD781FC8DD834_panamera-model-intro?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" 
+                             alt="Panamera Model" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white text-xl font-bold">Panamera</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption combined (model range): 10.4 – 9.6 l/100 km, CO₂-emissions combined (model range): 236 – 219 g/km</p>
+                        
+                        <div class="stats-grid gap-4 mb-6">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">5.1 s</p>
+                                <p class="text-xs text-gray-600">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">353 PS</p>
+                                <p class="text-xs text-gray-600">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">272 km/h</p>
+                                <p class="text-xs text-gray-600">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-black hover:bg-gray-800 text-white py-2 rounded-full transition">Select model</button>
+                            <button class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-100 transition">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model Card 2 -->
+                <div class="model-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images-porsche.imgix.net/-/media/E06863CA7D134521B0D3406CE8CC8E4C_25B397EE02BF4B7CB78825FAEB0726C3_panamera-4-model-intro?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" 
+                             alt="Panamera Model" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white text-xl font-bold">Panamera 4</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption combined (model range): 11.0 – 10.1 l/100 km, CO₂-emissions combined (model range): 250 – 230 g/km</p>
+                        
+                        <div class="stats-grid gap-4 mb-6">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">4.8 s</p>
+                                <p class="text-xs text-gray-600">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">353 PS</p>
+                                <p class="text-xs text-gray-600">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">270 km/h</p>
+                                <p class="text-xs text-gray-600">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-black hover:bg-gray-800 text-white py-2 rounded-full transition">Select model</button>
+                            <button class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-100 transition">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model Card 3 -->
+                <div class="model-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images-porsche.imgix.net/-/media/C7ADC76FD1A84CEAAE7024CF325F2F2D_A1EE7CB9ABB2413195B04F93D296AC29_panamera-4-e-hybrid-model-intro?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" 
+                             alt="Panamera Model" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white text-xl font-bold">Panamera 4 E-Hybrid</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption (weighted) combined (model range): 3.8 – 3.0 l/100 km, Electric energy consumption (weighted) combined (model range): 28.2 – 17.9 kWh/100 km, CO₂-emissions (weighted) combined (model range): 86 – 69 g/km</p>
+                        
+                        <div class="stats-grid gap-4 mb-6">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">4.1 s</p>
+                                <p class="text-xs text-gray-600">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">470 PS</p>
+                                <p class="text-xs text-gray-600">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">280 km/h</p>
+                                <p class="text-xs text-gray-600">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-black hover:bg-gray-800 text-white py-2 rounded-full transition">Select model</button>
+                            <button class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-100 transition">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional model cards would follow the same pattern -->
+            </div>
+        </section>
+
+        <!-- Executive Models Section -->
+        <section id="executive-models" class="model-section mb-16">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Panamera Executive Models</h2>
+                <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-medium transition flex items-center">
+                    <i class="fas fa-exchange-alt mr-2"></i> Compare models
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Executive Model Card 1 -->
+                <div class="model-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images-porsche.imgix.net/-/media/AF847E096A4E4331B829E7037AF2B7A7_8AD0E54034424537A1DED71DE5BDE51D_041-panamera-4-e-hybrid-model-intro-3074x857?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" 
+                             alt="Panamera Executive Model" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white text-xl font-bold">Panamera 4 E-Hybrid Executive</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption (weighted) combined (model range): 3.8 – 3.2 l/100 km, Electric energy consumption (weighted) combined (model range): 28.3 – 18.0 kWh/100 km, CO₂-emissions (weighted) combined (model range): 87 – 72 g/km</p>
+                        
+                        <div class="stats-grid gap-4 mb-6">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">4.2 s</p>
+                                <p class="text-xs text-gray-600">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">470 PS</p>
+                                <p class="text-xs text-gray-600">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">280 km/h</p>
+                                <p class="text-xs text-gray-600">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-black hover:bg-gray-800 text-white py-2 rounded-full transition">Select model</button>
+                            <button class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-100 transition">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive Model Card 2 -->
+                <div class="model-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images-porsche.imgix.net/-/media/1693EB9BB80D4B3ABC228B5809E0DB27_B91AD2F20EB243CFAC350E540E1E49B8_041-model-intro-panamera-turbo-s-e-hybrid-executive-3074x857?w=1400&q=85&crop=faces%2Centropy%2Cedges&auto=format" 
+                             alt="Panamera Executive Model" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white text-xl font-bold">Panamera Turbo S E-Hybrid Executive</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Fuel consumption (weighted) combined (model range): 4.5 – 4.2 l/100 km, Electric energy consumption (weighted) combined (model range): 29.8 – 18.6 kWh/100 km, CO₂-emissions (weighted) combined (model range): 102 – 96 g/km</p>
+                        
+                        <div class="stats-grid gap-4 mb-6">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">3.0 s</p>
+                                <p class="text-xs text-gray-600">0-100 km/h</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">782 PS</p>
+                                <p class="text-xs text-gray-600">Power</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600">325 km/h</p>
+                                <p class="text-xs text-gray-600">Top speed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-black hover:bg-gray-800 text-white py-2 rounded-full transition">Select model</button>
+                            <button class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-100 transition">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Models</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">718</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">911</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Taycan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Panamera</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Macan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cayenne</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Finance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Service & Parts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Porsche Connect</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Porsche Driver's Selection</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">About Porsche</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Company</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Investor Relations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="text-gray-400">© 2023 Porsche. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter chip interaction
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                // Remove active class from all chips
+                document.querySelectorAll('.filter-chip').forEach(c => {
+                    c.classList.remove('active');
+                });
+                // Add active class to clicked chip
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for model navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+/* Hero Image Styles */
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://porsche.imgix.net/-/media/5B87EAE0895A4147BB5566974197BAFE_4C66E61036A1416BAF7D9B90C3A5D3B0_00---J1-Black-Edition---fallback---Desktop?iar=0&w=1299&ar=4%3A3&q=85&auto=format');
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease;
+}
+
+/* Car Card Hover Effects */
+.car-card:hover .car-image {
+    transform: scale(1.05);
+}
+
+/* Discover Card Hover Effects */
+.discover-card {
+    transition: all 0.3s ease;
+}
+
+.discover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Link Underline Animation */
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #d50000;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Additional Custom Styles */
+.car-image {
+    transition: transform 0.5s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-image {
+        background-attachment: scroll;
+    }
+}
+
+/* Smooth transitions for all interactive elements */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Additional styles for other pages */
+.model-card:hover .model-image {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+}
+
+.model-image {
+    transition: transform 0.3s ease;
+}
+
+.filter-checkbox:checked + .filter-label {
+    background-color: #d5001c;
+    color: white;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+/* Model page specific styles */
+.model-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images-porsche.imgix.net/-/media/66C5132442584A4EBE1159CEB1B5D476_9694CB9F5C63484D9509AFD68A47CC0A_911-carrera-sideshot?w=2560&h=760&q=85&crop=faces%2Centropy%2Cedges&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Filter styles */
+.filter-label {
+    transition: all 0.3s ease;
+}
+
+.filter-label:hover {
+    background-color: #e5e7eb;
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Taycan page specific styles */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images-porsche.imgix.net/-/media/6049CBB05075454190EFC1BC0A32C8A0_EDED71EA79414F64935100DD740A172F_taycan_sport_limousine_sideshot?w=2560&h=712&q=85&crop=faces%2Centropy%2Cedges&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.electric-badge {
+    background-color: #1e40af;
+}
+
+.compare-btn {
+    transition: all 0.3s ease;
+}
+
+.compare-btn:hover {
+    background-color: #1e40af;
+    color: white;
+}
+
+.filter-btn.active {
+    background-color: #1e40af;
+    color: white;
+} 

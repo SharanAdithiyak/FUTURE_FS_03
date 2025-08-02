@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche Experience | Porsche International</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images-porsche.imgix.net/-/media/15A5CCAAF3B7442BBDFD951DF5E65D51_2FD89F957F804501B00E0229135308F7_001-hero_21-9_5120x2194?w=999&q=85&auto=format');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+        
+        .experience-card {
+            transition: all 0.3s ease;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .scroll-container {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-black text-white py-4 px-6 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="data:image/jpeg;base64,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" alt="Porsche Logo" class="h-10">
+                <span class="ml-2 text-xl font-bold">PORSCHE</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="hover:text-red-500 transition">Models</a>
+                <a href="#" class="hover:text-red-500 transition">Experience</a>
+                <a href="#" class="hover:text-red-500 transition">Services</a>
+                <a href="#" class="hover:text-red-500 transition">About</a>
+                <a href="#" class="hover:text-red-500 transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black py-2 px-4 absolute w-full left-0">
+            <a href="#" class="block py-2 hover:text-red-500 transition">Models</a>
+            <a href="#" class="block py-2 hover:text-red-500 transition">Experience</a>
+            <a href="#" class="block py-2 hover:text-red-500 transition">Services</a>
+            <a href="#" class="block py-2 hover:text-red-500 transition">About</a>
+            <a href="#" class="block py-2 hover:text-red-500 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex items-center justify-center text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Make it Yours.</h1>
+            <p class="text-xl md:text-2xl mb-8">Head. Heart. Hands on the steering wheel. Feel the fascination of Porsche.</p>
+            <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                Discover More
+            </button>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-16 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl font-bold mb-6">Porsche Experience Programmes</h2>
+            <p class="text-lg text-gray-700 mb-8">
+                Leave everyday life miles behind you. Behind the wheel of a Porsche, you can take off on legendary race tracks, explore the most beautiful places in the world or enjoy action-packed driving fun on ice slopes as smooth as glass. With the Porsche Experience, you experience your very own personal and individual adventure.
+            </p>
+            <p class="text-lg text-gray-700">
+                10 Porsche Experience Centres worldwide also offer the opportunity to experience the fascination of Porsche at first hand. Unique worlds of experience fulfil lifelong dreams.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Centers Section -->
+    <section class="py-16 px-6 bg-gray-100">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Experience Centers World Wide</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Hockenheimring -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/9DD4628844874AFFA8E8E8817EC291C3_811990A9DC4942F19857B8F0B7A56FC9_008-extended-teaser_PEC_HHR_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Hockenheimring" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Hockenheimring</h3>
+                        <p class="text-gray-700 mb-4">Since 2019 embedded in the legendary Grand Prix circuit, Hockenheim offers the best conditions with handling tracks, off-road course, dynamic area and slalom area to take your driving fundamentals to the next level.</p>
+                        <a href="https://www.porsche-experiencecenter-hockenheimring.de/" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Leipzig -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/B833173E694F4914B02A6DE430AA512F_37D952603E9049C2ADF35C5780EA333C_008-extended-teaser_PEC_LEIP_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Leipzig" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Leipzig</h3>
+                        <p class="text-gray-700 mb-4">The 3.7-kilometre FIA-certified circuit consists of 11 bends inspired by the world's most famous race tracks. An ideal training terrain - not only for entry-level formats. Experience innovation at first hand.</p>
+                        <a href="https://www.porsche-leipzig.com/unsere-angebote/eventlocation/porsche-experience-center" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Franciacorta -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/9E6915E334324FB8A3081F837B75DE23_99DC8611A92A481183304D21BE621BF8_008-extended-teaser_Teaser3_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Franciacorta" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Franciacorta</h3>
+                        <p class="text-gray-700 mb-4">In Italy, there is the first Porsche Experience Center that was certified as a sustainable event location, relying purely on renewable energies. Other highlights: the 2.5-kilometre FIA-approved track and the 1.2-kilometre natural off-road course.</p>
+                        <a href="https://www.porsche-franciacorta.it/" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Le Mans -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/27969E3DF77D43749A627CDF0B981ACD_927DF84D704B42D5AD81757E0B861E3F_008-extended-teaser_Teaser4_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Le Mans" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Le Mans</h3>
+                        <p class="text-gray-700 mb-4">At Le Mans, Porsche created its identity, which is inseparably linked to motor racing. Directly connected to the track of the world-famous 24-hour-race, get the fascinating opportunity to experience a Porsche where it feels most comfortable.</p>
+                        <a href="https://www.porsche-experience-center.fr/accueil" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Silverstone -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/7E5F87149E0049B494D148D495707975_633C6F95130A406EAAC40930198CC605_008-extended-teaser_Teaser5_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Silverstone" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Silverstone</h3>
+                        <p class="text-gray-700 mb-4">Next to the Formula 1 track, the first Porsche Experience Center of its kind has served as a beacon since 2008. The 6-kilometre FIA-certified track makes it possible to simulate different surfaces: fancy ice and snow in midsummer? No problem.</p>
+                        <a href="https://www.porsche.com/silverstone/en/" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Shanghai -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/65A2211CF6224573A20817BD510AEC34_9DA2C9328C37440BAF5D092A5E495EC7_008-extended-teaser_Teaser6_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Shanghai" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Shanghai</h3>
+                        <p class="text-gray-700 mb-4">The first Porsche Experience Center on the Asian continent was built next to the Formula 1 track. With its functional aesthetics, form merges with function. This also applies to the Porsche track, which is divided into 5 different driving areas.</p>
+                        <a href="https://pec-shanghai.cn/en/" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="show-more-centers" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    Show More Centers
+                </button>
+            </div>
+            
+            <!-- Hidden Centers -->
+            <div id="more-centers" class="hidden mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tokyo -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/E78BF842C9B3458C88B32FE6CFAFE0E0_1C7605FB5D4C42FAA51340FFE1245769_008-extended-teaser_Teaser7_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Tokyo" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Tokyo</h3>
+                        <p class="text-gray-700 mb-4">Located in one of Japan's most beautiful areas, the track modules follow the natural topography with differences in altitude for spectacular driving. Moreover, the Tokyo location initiates environmental and educational projects for young people.</p>
+                        <a href="https://porsche-experiencecenter-tokyo.jp/" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Los Angeles -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/39AAD2A08D4D4D3984449396FDDA0B06_2A89CAE74A1241D39E267B32C88C7722_008-extended-teaser_Teaser8_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Los Angeles" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Los Angeles</h3>
+                        <p class="text-gray-700 mb-4">The vibrant city begs to be seen. Since 2016, Porsche fans have been able to try out 9 driving modules to their heart's content – including a replica of the carousel of the Nürburgring Nordschleife and an off-road course with a 40-degree incline.</p>
+                        <a href="https://www.porschedriving.com/los-angeles" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Atlanta -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/2C811BB18C2444A7AB9F5A3D8D7E4153_DAB0B5B9E64041F9A87BB4B6E09A3669_008-extended-teaser_Teaser9_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Atlanta" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Atlanta</h3>
+                        <p class="text-gray-700 mb-4">Opened in 2015, the Porsche Experience Center is also the headquarters of Porsche Cars North America, offering you intense driving experiences. You want to take it easy? View historic vehicles in the Heritage Galley or enjoy sophisticated cuisine.</p>
+                        <a href="https://www.porschedriving.com/atlanta" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Toronto -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/563C47065391403B9EE706DF39908882_C28230676ED246AC8C433553400AE9D5_008-extended-teaser_Teaser10_4-3_3840x2880?w=1299&q=85&auto=format" alt="Porsche Experience Center Toronto" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Toronto (from 2024)</h3>
+                        <p class="text-gray-700 mb-4">Porsche has always been committed to a unique brand and product experience. In 2024, the tenth PEC will be added in Canada – for the perfect mix of vehicle dynamics, technology and emotion, including a casino, concert hall, luxury hotel and more.</p>
+                        <a href="https://newsroom.porsche.com/en/2021/company/porsche-experience-center-pec-toronto-26273.html" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Singapore -->
+                <div class="experience-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images-porsche.imgix.net/-/media/2F23F42A66B04A33A1B7CCB59A1F6F9D_4234073ABFBC4323A99CC84EC30D7F62_008-extended-teaser_Teaser11_4-3_3840x2880_PEC-Singapore?w=1299&q=85&auto=format" alt="Porsche Experience Center Singapore" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Porsche Experience Center Singapore (from 2027)</h3>
+                        <p class="text-gray-700 mb-4">From adrenaline-filled on-track driving sessions to immersive activities for the whole family. The new PEC Singapore is set to be bring more excitement to the future Changi precinct and aims to be operational in 2027.</p>
+                        <a href="https://newsroom.porsche.com/en/2024/company/porsche-experience-center-singapore-2027-36147.html" class="text-red-600 font-semibold hover:text-red-800 transition">Discover more <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Moments of Pure Excitement</h2>
+            
+            <div class="scroll-container overflow-x-auto pb-4">
+                <div class="flex space-x-4" style="min-width: max-content;">
+                    <!-- Gallery Items -->
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/D69EEAFAFDB14A5B8A4F74406730FE47_D211186580AA46D2ADA6D9E7B86EF14D_016-slider_PIE_D_01_1920x1080?w=1299&q=85&auto=format" alt="Porsche Ice Experience" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/A359C365656A4242818A77A0BECE9CA1_8985548139304408B9915E5F7DDF7379_016-slider_PE_D_01_1920x1080?w=1299&q=85&auto=format" alt="Porsche in desert" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/F7042CA7EA584898AEDB772A5306285C_01CFBCC91D8C4F5784A2A800B3E26A46_016-slider_Porsche-Track-Experience_Soul-on-Track-Paul-Ricard_821535_00752_1920x1080?w=1299&q=85&auto=format" alt="Porsche on track" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/EF45511711B24FC7B66569060EE5CCAC_374F7013ADE94F3D949D9186E72EB064_016-slider_Porsche-Ice-Experience_IE_W5_31_01_2023_2193_1920x1080?w=1299&q=85&auto=format" alt="Porsche instructor" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/F80FD73AC7554CCE9A6896CDB605B6AF_CC37DEAFBF37425FACEF3A97C08C19B1_016-slider_220524-SICILY-DAY01-BEACH-06297_1920x1080?w=1299&q=85&auto=format" alt="Holidaymakers" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/E7F940CE87794A02B83AA7796225943F_DD298A1029614BC39D46466871A72F66_016-slider_Master-Nrburgring_822505_00586_1920x1080?w=1299&q=85&auto=format" alt="Porsche Track Experience" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/B7B2448AA5274BB69AE7D350C32E9C32_E1AC2074F3DD48F1AAD223541720A6E2_016-slider_PEC_HHR_D_1920x1080?w=1299&q=85&auto=format" alt="Porsche models at Hockenheimring" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item flex-shrink-0 w-80 h-64 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images-porsche.imgix.net/-/media/48D5CC013E1E4423936ECC6E82668CC0_59402941ED5248D6818081D75D0899A4_016-slider_PEC_Leipzig_D_1920x1080?w=1299&q=85&auto=format" alt="Porsche showroom" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consumption Section -->
+    <section class="py-16 px-6 bg-gray-900 text-white">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold mb-8 text-center">Consumption and Emissions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Taycan Turbo</h3>
+                    <p class="text-gray-300">Electric energy consumption combined (model range): 20.0 – 17.7 kWh/100 km</p>
+                    <p class="text-gray-300">CO₂-emissions combined (model range): 0 g/km</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">911 GT3 RS</h3>
+                    <p class="text-gray-300">Fuel consumption combined: 13.2 l/100 km (preliminary value)</p>
+                    <p class="text-gray-300">CO2-emissions combined (WLTP): 299 g/km (preliminary value)</p>
+                    <p class="text-gray-300">CO2 Class: G (preliminary value)</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">718 Cayman GT4 RS</h3>
+                    <p class="text-gray-300">Fuel consumption combined: 13.0 l/100 km (preliminary value)</p>
+                    <p class="text-gray-300">CO2-emissions combined (WLTP): 295 g/km (preliminary value)</p>
+                    <p class="text-gray-300">CO2 Class: G (preliminary value)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Porsche</h3>
+                    <p class="text-gray-400">Experience the fascination of Porsche.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Models</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Experience</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Porscheplatz 1</li>
+                        <li class="text-gray-400">70435 Stuttgart</li>
+                        <li class="text-gray-400">Germany</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>© 2024 Porsche. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Show more centers
+        document.getElementById('show-more-centers').addEventListener('click', function() {
+            const moreCenters = document.getElementById('more-centers');
+            const button = document.getElementById('show-more-centers');
+            
+            if (moreCenters.classList.contains('hidden')) {
+                moreCenters.classList.remove('hidden');
+                button.textContent = 'Show Less Centers';
+            } else {
+                moreCenters.classList.add('hidden');
+                button.textContent = 'Show More Centers';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
